@@ -1,0 +1,32 @@
+version: '3'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  web:
+    networks:
+      - app-tier
+    image: bimawib/todo-list:1.0.0
+    ports:
+      - "8080:3000"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    ports:
+      - "5439:5432"
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    networks:
+      - app-tier
+    volumes:
+      - db-data:/data
+    
+volumes:
+  db-data:

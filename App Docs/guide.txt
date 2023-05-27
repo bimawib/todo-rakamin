@@ -8,12 +8,17 @@ DB_HOSTNAME =
 DB_NAME = todo_list
 DB_DIALECT = 
 DB_PORT = 
+POSTGRES_USER = 
+POSTGRES_PASSWORD = 
+POSTGRES_DB = todo_list
 
-npm install
+Running:
+docker build -t bimawib/todo-list:1.0.0
+docker-compose up
+docker exec -it (container id) sh
 
-psql : CREATE DATABASE todo_list
-(jika db sudah ada, cukup ubah nama database di .env)
-
+Migrate DB Inside Container : 
 npx sequelize-cli db:migrate
 
-npm run dev
+app url : https://localhost:3000/
+db : 0.0.0.0 (port 5439)
