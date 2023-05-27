@@ -1,0 +1,39 @@
+image: docker:latest
+
+variables:
+  REPOSITORY_URL: bimawib/todo-api
+  IMAGE_TAG: 1.3.0
+
+services:
+- docker:dind
+
+before_script:
+  - docker login --username=$DH_USERNAME --password=$DH_PASSWORD
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building image..."
+    - docker build
+      -t todo-api:1.3.0
+      --build-arg PORT=$PORT
+      --no-cache
+    - echo "Tagging image..."
+    - docker tag todo-api:1.3.0 $REPOSITORY_URL:1.3.0
+    - echo "Pushing image..."
+    - docker push $REPOSITORY_URL:1.3.0
+  only:
+    - master
+  
+deploy:
+  stage: deploy
+  script:
+    - docker stop todo-api || true && docker rm todo-api || true
+    - docker container run -dt -p $PORT:$PORT --name todo-api $REPOSITORY_URL:1.3.0
+    - docker image prune -f
+  only:
+    - master
