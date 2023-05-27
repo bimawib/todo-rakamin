@@ -22,5 +22,3 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag bimawib/todo-api:1.3.0
-    - name: Docker compose
-      run: docker-compose up
