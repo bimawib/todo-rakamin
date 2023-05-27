@@ -17,14 +17,18 @@ app.get('/', (req, res) => {
 
 app.use('/api/todos', TodoRoutes);
 
-app.listen(3000, () => {
-  console.log('server running in port 3000');
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(3000, () => {
+    console.log('server running in port 3000');
+  });
 
-client.connect((err) => {
-  if (err) {
-    console.log(err.message);
-  } else {
-    console.log('Database Connected');
-  }
-});
+  client.connect((err) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      console.log('Database Connected');
+    }
+  });
+}
+
+module.exports = app;

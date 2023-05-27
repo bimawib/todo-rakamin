@@ -4,7 +4,7 @@ Set the env to match db credentials
 APP_HOSTNAME = http://localhost:3000/
 DB_USERNAME = 
 DB_PASSWORD = 
-DB_HOSTNAME = 
+DB_HOSTNAME = db
 DB_NAME = todo_list
 DB_DIALECT = 
 DB_PORT = 
@@ -15,6 +15,7 @@ POSTGRES_DB = todo_list
 Running:
 docker build -t bimawib/todo-list:1.0.0
 docker-compose up
+docker ps
 docker exec -it (container id) sh
 
 Migrate DB Inside Container : 

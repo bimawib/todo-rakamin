@@ -15,7 +15,10 @@ const TodoControllers = {
       limit: limitQuery,
       offset,
     });
-    res.status(200).json({ data: result });
+    res.status(200).json({
+      data: result,
+      message: 'success',
+    });
   },
 
   async getById(req, res) {
@@ -26,7 +29,10 @@ const TodoControllers = {
         error: 'Todo not found',
       });
     }
-    return res.json({ data: todo });
+    return res.json({
+      data: todo,
+      message: 'success',
+    });
   },
 
   async create(req, res) {
@@ -36,7 +42,10 @@ const TodoControllers = {
       status: req.body.status,
     };
     const createTodo = await Todo.create(field);
-    return res.json({ data: createTodo });
+    return res.json({
+      data: createTodo,
+      message: 'success',
+    });
   },
 
   async update(req, res) {
@@ -60,7 +69,10 @@ const TodoControllers = {
     });
 
     const updatedTodo = await Todo.findByPk(id);
-    return res.json({ data: updatedTodo });
+    return res.json({
+      data: updatedTodo,
+      message: 'success',
+    });
   },
 
   async delete(req, res) {
@@ -73,7 +85,9 @@ const TodoControllers = {
       });
     }
     const deletedTodo = await Todo.destroy({ where: { id } });
-    return res.json({ message: 'To do task has been deleted' });
+    return res.json({
+      message: 'To do task has been deleted',
+    });
   },
 };
 
