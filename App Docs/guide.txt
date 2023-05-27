@@ -1,3 +1,6 @@
+REPO GITLAB : https://gitlab.com/bimawib1/todo-api
+REPO DOCKER : https://hub.docker.com/repository/docker/bimawib/todo-api/general
+
 Setting db credential at .env (create one)
 
 Set the env to match db credentials
@@ -12,13 +15,15 @@ POSTGRES_USER =
 POSTGRES_PASSWORD = 
 POSTGRES_DB = todo_list
 
+APP URL (RUNNED IN CONTAINER) : https://localhost:8080/
+DB : 0.0.0.0 (port 5439)
+
 Running Local:
 docker build -t bimawib/todo-api:1.3.0 .
 docker-compose up
 docker ps
 docker exec -it (container id) sh
-
 npx sequelize-cli db:migrate (inside container)
 
-app url : https://localhost:3000/
-db : 0.0.0.0 (port 5439)
+REPO GITLAB : https://gitlab.com/bimawib1/todo-api
+REPO DOCKER : https://hub.docker.com/repository/docker/bimawib/todo-api/general
