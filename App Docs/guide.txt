@@ -1,0 +1,19 @@
+Setting db credential at .env (create one)
+
+Set the env to match db credentials
+APP_HOSTNAME = http://localhost:3000/
+DB_USERNAME = 
+DB_PASSWORD = 
+DB_HOSTNAME = 
+DB_NAME = todo_list
+DB_DIALECT = 
+DB_PORT = 
+
+npm install
+
+psql : CREATE DATABASE todo_list
+(jika db sudah ada, cukup ubah nama database di .env)
+
+npx sequelize-cli db:migrate
+
+npm run dev
