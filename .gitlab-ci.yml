@@ -19,11 +19,11 @@ build:
   script:
     - echo "Building image..."
     - docker build
-      -t todo-api:1.3.0
+      -t bimawib/todo-api:1.3.0
       --build-arg PORT=$PORT
       --no-cache
     - echo "Tagging image..."
-    - docker tag todo-api:1.3.0 $REPOSITORY_URL:1.3.0
+    - docker tag bimawib/todo-api:1.3.0 $REPOSITORY_URL:1.3.0
     - echo "Pushing image..."
     - docker push $REPOSITORY_URL:1.3.0
   only:
@@ -32,8 +32,8 @@ build:
 deploy:
   stage: deploy
   script:
-    - docker stop todo-api || true && docker rm todo-api || true
-    - docker container run -dt -p $PORT:$PORT --name todo-api $REPOSITORY_URL:1.3.0
+    - docker stop bimawib/todo-api || true && docker rm bimawib/todo-api || true
+    - docker container run -dt -p $PORT:$PORT --name bimawib/todo-api $REPOSITORY_URL:1.3.0
     - docker image prune -f
   only:
     - master
