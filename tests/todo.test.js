@@ -1,6 +1,7 @@
 const app = require('../app');
 const request = require('supertest');
 
+// GET ALL TODO LIST
 test('Get Message Success From Get All Todo API', (done) => {
   request(app)
     .get('/api/todos/')
@@ -13,6 +14,7 @@ test('Get Message Success From Get All Todo API', (done) => {
     .catch(done);
 });
 
+// GET TODO BY ID
 test('Get Count Data From First Page Todo API', (done) => {
   request(app)
     .get('/api/todos/')
@@ -25,6 +27,7 @@ test('Get Count Data From First Page Todo API', (done) => {
     .catch(done);
 });
 
+// CREATE TODO
 test('Create data for Todo List', async () => {
   const todo = {
     todo: 'MAEN APEX',
@@ -43,6 +46,7 @@ test('Create data for Todo List', async () => {
   expect(response.body.data.status).toBe(todo.status);
 });
 
+// UPDATE TODO
 test('Update data with PUT method', async () => {
   const todoId = 1;
   const todoUpdated = {
@@ -62,6 +66,7 @@ test('Update data with PUT method', async () => {
   expect(response.body.data.status).toEqual(todoUpdated.status);
 });
 
+// DELETE TODO
 test('Delete data with DELETE method', async () => {
   const newTodo = {
     todo: 'BEING A GOOD DEVELOPER',
