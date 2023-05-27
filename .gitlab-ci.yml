@@ -23,7 +23,7 @@ build:
       --build-arg PORT=$PORT
       --no-cache
     - echo "Tagging image..."
-    - docker tag bimawib/todo-api:1.3.0 $REPOSITORY_URL:1.3.0
+    - docker tag bimawib/todo-api:1.3.0 $REPOSITORY_URL
     - echo "Pushing image..."
     - docker push $REPOSITORY_URL:1.3.0
   only:
