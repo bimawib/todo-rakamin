@@ -26,3 +26,11 @@ jobs:
       run: docker tag bimawib/todo-api:1.3.0 bimawib/todo-api
     - name: Push the Docker image
       run: docker push bimawib/todo-api:1.3.0
+    - name: Run the image in a container
+      uses: addnab/docker-run-action@v3
+      with:
+          image: ${{ secrets.DOCKER_USER }}/todo-api:1.3.0
+          run: |
+            echo "runing the docker image"
+            echo "Testing the nodejs  app endpoints"
+            echo ${{ steps.docker_build.outputs.digest }}
