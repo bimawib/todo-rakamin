@@ -24,6 +24,3 @@ docker-compose up
 docker ps
 docker exec -it (container id) sh
 npx sequelize-cli db:migrate (inside container)
-
-REPO GITLAB : https://gitlab.com/bimawib1/todo-api
-REPO DOCKER : https://hub.docker.com/repository/docker/bimawib/todo-api/general
